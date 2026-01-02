@@ -1,0 +1,5 @@
+{
+  "name": "Mine Profile Clone",
+  "description": "A pixel-perfect 1:1 mobile application clone of the provided profile screen, featuring a custom gradient header, account balance section, feature grid, and detailed menu list with bottom navigation.",
+  "requestFramePermissions": []
+}
